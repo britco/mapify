@@ -23,8 +23,8 @@
         "mocha": "1.18.2",
         "referee": "1.0.2",
         "referee-sinon": "1.0.1",
-        "sinon": "1.9.0",
-        "proxyquire": "0.5.3",
+        "sinon": "1.9.1",
+        "proxyquire": "0.6.0",
         "eslint": "0.4.5"
     },
     "peerDependencies": {
