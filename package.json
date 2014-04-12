@@ -25,7 +25,7 @@
         "referee-sinon": "1.0.1",
         "sinon": "1.9.1",
         "proxyquire": "0.6.0",
-        "eslint": "0.4.5"
+        "eslint": "0.5.0"
     },
     "peerDependencies": {
         "browserify": ">=3.28.0 <=4.x"
