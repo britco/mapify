@@ -43,25 +43,27 @@ describe('mapify', function () {
         expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/qux/quux.js', {expose: path.join('exposed', 'qux', 'quux')});
     });
 
-    it('should override the path separator', function() {
-        mapify(browserify, {
-            pathSeparator: '/', 
-            entries: [ { cwd: 'foo/bar', pattern: '**/*.js', expose: 'exposed'} ]
+    describe('overriding the path separator', function () {
+        it('should work with /', function () {
+            mapify(browserify, {
+                pathSeparator: '/',
+                entries: [ { cwd: 'foo/bar', pattern: '**/*.js', expose: 'exposed'} ]
+            });
+
+            expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/baz.js', {expose: 'exposed/baz'});
+            expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/qux/quux.js', {expose: 'exposed/qux/quux'});
+
         });
 
-        expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/baz.js', {expose: 'exposed/baz'});
-        expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/qux/quux.js', {expose: 'exposed/qux/quux'});
+        it('should work with \\', function () {
+            mapify(browserify, {
+                pathSeparator: '\\',
+                entries: [ { cwd: 'foo/bar', pattern: '**/*.js', expose: 'exposed'} ]
+            });
 
-    });
-
-    it('should override the path separator', function() {
-        mapify(browserify, {
-            pathSeparator: '\\', 
-            entries: [ { cwd: 'foo/bar', pattern: '**/*.js', expose: 'exposed'} ]
+            expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/baz.js', {expose: 'exposed\\baz'});
+            expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/qux/quux.js', {expose: 'exposed\\qux\\quux'});
         });
-
-        expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/baz.js', {expose: 'exposed\\baz'});
-        expect(browserify.require).toHaveBeenCalledWithExactly('foo/bar/qux/quux.js', {expose: 'exposed\\qux\\quux'});
     });
 
 });
