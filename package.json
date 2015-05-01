@@ -28,7 +28,7 @@
         "eslint": "0.5.0"
     },
     "peerDependencies": {
-        "browserify": ">=3.28.0 <=4.x"
+        "browserify": ">= 3.28.0 < 11"
     },
     "author": "Mathias Schreck <schreck.mathias@gmail.com>",
     "license": "WTFPL",
